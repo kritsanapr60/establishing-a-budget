@@ -73,7 +73,11 @@
         "sweetalert2": "^10.13.0",
         "thai-baht-text": "^1.0.8",
         "web-animations-js": "2.3.2",
-        "zone.js": "0.11.1"
+        "zone.js": "0.11.1",
+        "@angular-devkit/build-angular": "0.1001.4",
+        "@angular/cli": "10.1.4",
+        "@angular/compiler-cli": "10.1.4",
+        "typescript": "4.0.3"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "0.1001.4",
