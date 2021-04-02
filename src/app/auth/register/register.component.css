@@ -1,0 +1,26 @@
+/* .container-formname {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+} */
+
+.container-formname div {
+    width: 100%;
+}
+
+.mat-raised-button {
+    width: 100%;
+}
+
+.space {
+    width: 1rem;
+}
+
+@media (max-width: 450px) {
+    .mat-form-field {
+        widht: 100%
+    }
+    .container-formname div {
+        width: 100%;
+    }
+}

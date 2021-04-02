@@ -1,0 +1,21 @@
+@media only screen and (max-width: 414px) {
+    card {
+        width: 100%;
+    }
+}
+
+.detail {
+    margin: auto 5rem;
+}
+
+.panel-body {
+    margin: 2rem;
+}
+
+mat-radio-group {
+    margin: auto;
+}
+
+.panel-body {
+    width: 100%;
+}

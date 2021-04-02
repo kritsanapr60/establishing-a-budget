@@ -1,0 +1,31 @@
+.dot {
+    height: 10px;
+    width: 10px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.success {
+    background-color: #94e185;
+    border-color: #78d965;
+    box-shadow: 0px 0px 4px 1px #94e185;
+}
+
+.pending {
+    background-color: #ffc182;
+    border-color: #ffb161;
+    box-shadow: 0px 0px 4px 1px #ffc182;
+}
+
+.reject {
+    background-color: #c9404d;
+    border-color: #c42c3b;
+    box-shadow: 0px 0px 4px 1px #c9404d;
+}
+
+mat-icon-button {
+    color: #c42c3b;
+}
+
+.add-user {}

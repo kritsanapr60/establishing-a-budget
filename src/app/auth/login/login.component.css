@@ -1,0 +1,37 @@
+/* s */
+
+.main-content {
+    margin: 50px;
+}
+
+.responsive {
+    width: 50%;
+    height: auto;
+}
+
+.register-block {
+    margin: 20px;
+    text-align: center;
+}
+
+.mat-raised-button {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.forgot-password {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+@media (max-width: 450px) {
+    .title-login h3 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .card {
+        margin: auto;
+    }
+}

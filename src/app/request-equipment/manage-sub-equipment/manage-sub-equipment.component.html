@@ -1,0 +1,144 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">คำขอครุภัณฑ์หลักหรือโครงการที่กำลังดำเนิน</h4>
+                        <p class="card-category">ข้อมูลคำขอจัดตั้งครุภัณฑ์หลักและโครงการที่กำลังดำเนินการ ก่อนยืนยันข้อมูล</p>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <b>โครงการ / รายการหลัก</b>
+                        <hr>
+                        <table class="table table-hover">
+                            <thead class="thead-dark text-center">
+                                <!-- <th>ลำดับ</th> -->
+
+                                <th>รายการครุภัณฑ์ / โครงการ</th>
+                                <th>จำนวนหน่วย</th>
+                                <th>งบประมาณครุภัณฑ์หลัก / โครงการหลัก</th>
+                                <!-- <th>งบประมาณครุภัณฑ์ย่อย / โครงการย่อย</th> -->
+                                <!-- <th>ลบรายการ</th> -->
+                            </thead>
+                            <tbody class="text-center">
+                                <tr>
+                                    <!-- <td>{{ listProject.no }}</td> -->
+                                    <!-- <td>{{ listProject.type }}</td> -->
+                                    <td class="table-active">{{ majorList }}</td>
+                                    <td class="table-active">{{ necessary | number }}</td>
+                                    <td class="table-active">{{ budget | number }}</td>
+
+                                    <!-- <td class="text-red">{{ listProject.subEquipment }}</td> -->
+                                    <!-- <td><button mat-raised-button class="red" (click)="daleteEquip()"><mat-icon>delete</mat-icon></button></td> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                        <hr>
+                        <mat-card class="addSubEquip">
+                            <mat-card-title>เพิ่มรายการครุภัณฑ์ย่อย</mat-card-title>
+                            <mat-card-subtitle></mat-card-subtitle>
+                            <mat-card-content>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <form [formGroup]="subEquipment">
+                                                <div>
+                                                    <mat-form-field class="example-full-width" appearance="fill">
+                                                        <mat-label>ครุภัณฑ์</mat-label>
+                                                        <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="equipmentName" [matAutocomplete]="auto">
+                                                        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                                                            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                                                {{option}}
+                                                            </mat-option>
+                                                        </mat-autocomplete>
+                                                        <mat-hint>หากไม่มีรายการให้เลือก สามารถกรอกรายการที่ท่านต้องการ</mat-hint>
+                                                    </mat-form-field>
+                                                    <!-- <mat-form-field appearance="fill">
+                                                        <mat-label>ชื่อครุภัณฑ์</mat-label>
+                                                        <input matInput formControlName="equipmentName">
+                                                        <mat-error *ngIf="subEquipment.get('equipmentName').invalid">ยังไม่ได้กรอกชื่อครุภัณฑ์รอง</mat-error>
+                                                    </mat-form-field> -->
+
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>ราคาต่อหน่วย</mat-label>
+                                                        <input matInput type="number" formControlName="pricePerunit">
+                                                        <mat-hint matSuffix>/บาท</mat-hint>
+                                                        <mat-error *ngIf="subEquipment.get('pricePerunit').invalid">ยังไม่ได้กรอก ราคาต่อหน่วย</mat-error>
+                                                    </mat-form-field>
+
+                                                    <mat-form-field appearance="fill">
+                                                        <mat-label>จำนวนหน่วยที่จัดตั้ง</mat-label>
+                                                        <input matInput type="number" formControlName="unit">
+                                                        <mat-hint matSuffix>/เครื่อง / ชุด/ ชิ้น</mat-hint>
+                                                        <mat-error *ngIf="subEquipment.get('unit').invalid">ยังไม่ได้กรอกจำนวน หน่วย</mat-error>
+                                                    </mat-form-field>
+
+                                                    <!-- <mat-form-field appearance="fill">
+                                                        <mat-label>งบประมาณ</mat-label>
+                                                        <input matInput type="number" formControlName="budget">
+                                                        <mat-hint matSuffix>/บาท</mat-hint>
+                                                        <mat-error *ngIf="subEquipment.get('budget').invalid">ยังไม่ได้กรอกราคาของครุภัณฑ์ย่อย</mat-error>
+                                                    </mat-form-field> -->
+                                                    <div *ngIf="valueOfprice * valueOfunit != null">
+                                                        <p>ราคารวม : {{ valueOfprice * valueOfunit | number }} บาท</p>
+                                                    </div>
+                                                    <div class="center-align">
+                                                        <button [disabled]="subEquipment.invalid" mat-raised-button color="primary" type="submit" (click)="addSubEupqment()"><mat-icon>save</mat-icon>เพิ่ม</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+                        <hr>
+                        <!-- <app-list-sub-equipment></app-list-sub-equipment> -->
+                        <table class="table table-hover">
+                            <thead class="thead-dark text-center">
+                                <th>จำนวน/ลำดับ</th>
+                                <th>รายการครุภัณฑ์ย่อย</th>
+                                <th>ราคาต่อหน่วย</th>
+                                <th>จำนวนหน่วย</th>
+                                <th>งบประมาณ</th>
+                                <!-- <th>แก้ไข</th> -->
+                                <th>ลบ</th>
+                            </thead>
+                            <tbody class="text-center">
+
+                                <tr *ngFor="let listSub of subEquipmentsData; let i = index">
+                                    <td>
+                                        {{ i + 1 }}
+                                    </td>
+
+                                    <td class="table-active text-left">{{ listSub.equipmentName }}</td>
+                                    <td class="table-active">{{ listSub.budgetPerPrice | number }}</td>
+                                    <td class="table-active">{{ listSub.unit | number}}</td>
+                                    <td class="table-active">{{ listSub.budget | number }}</td>
+                                    <!-- <td class="table-active">
+                                        <button mat-raised-button color="primary" routerLink="/manageSubQuipment"><mat-icon>edit</mat-icon></button>
+                                    </td> -->
+                                    <td class="table-active">
+                                        <button mat-raised-button class="red" (click)="deleteEquipment(listSub._id, listSub.budget)"><mat-icon>delete</mat-icon></button>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>ราคารวม</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>{{ totalBudget | number }}</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- <button mat-raised-button color="primary" type="submit" (click)="saveSubEupqment()"><mat-icon>save</mat-icon>บันทึก</button> -->
+                    </div>
+                </div>
+
+                {{ subEquipment.value | json }}
+            </div>
+        </div>
+    </div>
+</div>

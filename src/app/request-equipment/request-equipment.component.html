@@ -1,0 +1,84 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">คำขอครุภัณฑ์หลักหรือโครงการที่กำลังดำเนิน</h4>
+                        <p class="card-category">ข้อมูลคำขอจัดตั้งครุภัณฑ์หลักและโครงการที่กำลังดำเนินการ ก่อนยืนยันข้อมูล
+                        </p>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <button mat-raised-button routerLink="/addRequestEquip">
+                            <span class="material-icons">
+                                add_task
+                            </span> เพิ่มคำขอโครงการ / ครุภัณฑ์</button> &nbsp; กรณีรายการครุภัณฑ์ไม่ผ่านการอนุมัติ จะเเสดงสถานะ &nbsp;&nbsp;<span class="dot reject"></span>&nbsp;&nbsp; ให้แก้ไข
+                        <hr>
+                        <table class="table table-hover">
+                            <thead class="text-center">
+                                <th></th>
+                                <th>สถานะ</th>
+                                <!-- <th>ประเภท</th> -->
+                                <th>รายการครุภัณฑ์ / โครงการ</th>
+                                <th>จำนวนหน่วย</th>
+                                <th>งบประมาณ</th>
+                                <th>ครุภัณฑ์ย่อย</th>
+                                <th></th>
+                                <!-- <th></th> -->
+                            </thead>
+                            <tbody class="text-center">
+                                <tr *ngFor="let listProject of document; let i = index">
+                                    <td>
+                                        <p class="card-title" *ngIf="listProject.status == 'ผ่านการอนุมัติ'"><span class="dot success"></span></p>
+                                        <p class="card-title" *ngIf="listProject.status == 'กำลังดำเนินการ'"><span class="dot pending"></span></p>
+                                        <p class="card-title" *ngIf="listProject.status == 'ไม่ผ่านการอนุมัติ'"><span class="dot reject"></span></p>
+                                    </td>
+                                    <td class="table-danger" *ngIf="countDataInSubEquipment[i]<= 0; else done" matTooltip="ยังไม่ได้เพิ่มครุภัณฑ์รอง">
+                                        <!-- {{ i +1 }} , {{ countDataInSubEquipment[i] }} -->
+                                        <mat-icon class="red">clear</mat-icon>
+                                    </td>
+                                    <ng-template #done>
+                                        <td class="table-success">
+                                            <mat-icon class="green">done_all</mat-icon>
+                                        </td>
+                                    </ng-template>
+
+                                    <!-- <td>{{ listProject.type }}</td> -->
+                                    <td class="text-left">{{ listProject.majorList }}</td>
+                                    <td>{{ listProject.necessary }}</td>
+                                    <td>{{ listProject.budget | number }}</td>
+                                    <td>
+                                        <button mat-raised-button color="" matTooltip="{{ listProject._id }}" matTooltipPosition="above" [routerLink]="['/manageSubQuipment', listProject._id]">
+                                            <mat-icon>add_to_photos</mat-icon>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button mat-icon-button matTooltip="ดูรายละเอียดโครงการ {{ listProject._id }}" matTooltipPosition="above" [routerLink]="['/readDetailForm', listProject._id]">
+                                            <mat-icon>remove_red_eye</mat-icon>
+                                        </button>
+                                        <button mat-icon-button matTooltip="แก้ไข {{ listProject._id }}" matTooltipPosition="above" [routerLink]="['/editRequestEquip', listProject._id]">
+                                            <mat-icon>edit</mat-icon>
+                                        </button>
+                                        <button mat-icon-button color="warn" matTooltip="ลบ {{ listProject._id }}" matTooltipPosition="above" (click)="deleteEquipment(listProject._id)">
+                                            <mat-icon>delete</mat-icon>
+                                        </button>
+                                    </td>
+
+                                    <!-- <td>
+                                    </td> -->
+                                </tr>
+                                <tr>
+                                    <td colspan="12" class="text-center">
+                                        <p class="info-text" *ngIf="document <= 0">ไม่มีข้อมูล</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- <mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)">
+                        </mat-paginator> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

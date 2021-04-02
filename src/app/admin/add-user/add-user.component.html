@@ -1,0 +1,272 @@
+<!-- <div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card" style="margin: auto">
+                    <div class="card-header" style="text-align: center;">
+                        <div class="col-md-12">
+                            <div class="col">
+                                <div class="title-login">
+                                    <h3>เพิ่มผู้ใช้งานในระบบ</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class=" card-body ">
+                        <form style="padding: 10px 20px;" [formGroup]="formUserData">
+                            <div class="form-row mb-4">
+                                <div class="col">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>ชื่อ</mat-label>
+                                        <input matInput placeholder="ระบุคำนำหน้าชื่อ นาย นาง นางสาว" formControlName="firstName">
+                                        <mat-icon matSuffix></mat-icon>
+                                        <mat-error *ngIf="formUserData.value.firstName == ''">
+                                            กรุณากรอกชื่อ
+                                        </mat-error>
+                                        <mat-hint></mat-hint>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>นามสกุล</mat-label>
+                                        <input matInput placeholder="กรอกนามสกุล" formControlName="lastName">
+                                        <mat-icon matSuffix></mat-icon>
+                                        <mat-error *ngIf="formUserData.value.lastName == ''">
+                                            กรุณากรอกนามสกุล
+                                        </mat-error>
+                                        <mat-hint></mat-hint>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>อีเมล</mat-label>
+                                <input matInput placeholder="กรอกอีเมล" type="email" formControlName="email">
+                                <mat-icon matSuffix>alternate_email</mat-icon>
+                                <mat-error *ngIf="formUserData.value.email == ''">
+                                    กรุณากรอกอีเมล
+                                </mat-error>
+                                <mat-error *ngIf="formUserData.value.email">
+                                    อีเมลไม่ถูกต้อง
+                                </mat-error>
+                                <mat-hint></mat-hint>
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field appearance="outline">
+                                <mat-label>รหัสผ่าน</mat-label>
+                                <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" formControlName="password">
+                                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                <mat-error *ngIf="formUserData.value.password == ''">
+                                    กรุณากรอกรหัสผ่าน
+                                </mat-error>
+                                <mat-error *ngIf="formUserData.value.password.length > 8">
+                                    รหัสผ่านน้อยกว่า 8 หลัก
+                                </mat-error>
+                                <mat-hint>รหัสผ่านต้องมี 8 ตัวขึ้นไป</mat-hint>
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field appearance="outline">
+                                <mat-label>ยืนยันรหัสผ่าน</mat-label>
+                                <input matInput placeholder="กรอกรหัสผ่านอีกครั้ง" ngValidateEqual="password" [type]="hide ? 'password' : 'text'" formControlName="confirm_password">
+                                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                <mat-error *ngIf="formUserData.value.confirm_password == ''">
+                                    กรุณายืนยันรหัสผ่าน
+                                </mat-error>
+                                <mat-error *ngIf="(formUserData.value.confirm_password.dirty || formUserData.value.confirm_password.touched) && formUserData.value.confirm_password.invalid">
+                                    <p *ngIf="formUserData.value.confirm_password.hasError('notEqual') && formUserData.value.confirm_password.valid">
+                                        รหัสผ่านไม่ตรงกัน
+                                    </p>
+                                </mat-error>
+
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field appearance="outline">
+                                <mat-label>เบอร์โทรศัพท์</mat-label>
+                                <input matInput placeholder="Enter your phone number" formControlName="phone">
+                                <mat-icon matSuffix>phone</mat-icon>
+                                <mat-error *ngIf="formUserData.value.phone == ''">
+                                    กรุณากรอกหมายเลขโทรศัพท์
+                                </mat-error>
+                                <mat-error *ngIf="formUserData.value.phone.length < 10">
+                                    เลขโทรศัพท์ไม่ครบ 10 หลัก
+                                </mat-error>
+                                <mat-hint></mat-hint>
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field appearance="fill">
+                                <mat-label>ตำแหน่ง</mat-label>
+                                <mat-select formControlName="position">
+                                    <mat-option *ngFor="let posi of posite" value="{{ posi.value }}">
+                                        {{posi.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="formUserData.value.position == ''">
+                                    กรุณาเลือกตำแหน่ง
+                                </mat-error>
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field appearance="fill">
+                                <mat-label>กลุ่มสาระการเรียนรู้</mat-label>
+                                <mat-select formControlName="department">
+                                    <mat-option *ngFor="let department of departments" value="{{ department.value }}">
+                                        {{department.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="formUserData.value.department == ''">
+                                    กรุณาเลือกกลุ่มสาระการเรียนรู้
+                                </mat-error>
+                            </mat-form-field>
+                            <hr>
+                            <div class="button-group">
+                                <button mat-raised-button color="primary" [disabled]="formUserData.invalid" (click)="addUser()">
+                                    <mat-icon>save</mat-icon> สมัครสมาชิก
+                                </button> &nbsp;
+                                <button mat-raised-button color="warn" mat-dialog-close>
+                                    <mat-icon> cancel_presentation</mat-icon> กเลิก
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!-- Section add user -->
+<button type="button" class="close" data-dismiss="alert" aria-label="Close" mat-dialog-close>
+    <span aria-hidden="true">&times;</span>
+</button>
+<h2 mat-dialog-title>เพิ่มผู้ใช้งานในระบบ</h2>
+<mat-dialog-content class="mat-typography">
+    <form style="padding: 10px 20px;" [formGroup]="formUserData">
+        <div class="form-row mb-4">
+            <div class="col">
+                <mat-form-field appearance="outline">
+                    <mat-label>ชื่อ</mat-label>
+                    <input matInput placeholder="ระบุคำนำหน้าชื่อ นาย นาง นางสาว" formControlName="firstName">
+                    <mat-icon matSuffix></mat-icon>
+                    <mat-error *ngIf="formUserData.value.firstName == ''">
+                        กรุณากรอกชื่อ
+                    </mat-error>
+                    <mat-hint></mat-hint>
+                </mat-form-field>
+            </div>
+            <!-- &nbsp;&nbsp; -->
+            <div class="col">
+                <mat-form-field appearance="outline">
+                    <mat-label>นามสกุล</mat-label>
+                    <input matInput placeholder="กรอกนามสกุล" formControlName="lastName">
+                    <mat-icon matSuffix></mat-icon>
+                    <mat-error *ngIf="formUserData.value.lastName == ''">
+                        กรุณากรอกนามสกุล
+                    </mat-error>
+                    <mat-hint></mat-hint>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <mat-form-field appearance="outline">
+            <mat-label>อีเมล</mat-label>
+            <input matInput placeholder="กรอกอีเมล" type="email" formControlName="email">
+            <!-- <mat-icon matSuffix>email</mat-icon> -->
+            <mat-icon matSuffix>alternate_email</mat-icon>
+            <mat-error *ngIf="formUserData.value.email == ''">
+                กรุณากรอกอีเมล
+            </mat-error>
+            <mat-error *ngIf="formUserData.value.email">
+                อีเมลไม่ถูกต้อง
+            </mat-error>
+            <mat-hint></mat-hint>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+            <mat-label>รหัสผ่าน</mat-label>
+            <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" formControlName="password">
+            <!-- <mat-icon matSuffix>password</mat-icon> -->
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-error *ngIf="formUserData.value.password == ''">
+                กรุณากรอกรหัสผ่าน
+            </mat-error>
+            <mat-error *ngIf="formUserData.value.password.length > 8">
+                รหัสผ่านน้อยกว่า 8 หลัก
+            </mat-error>
+            <!-- <mat-error *ngIf="formUserData.value.password.length <= 8">
+                รหัสผ่านต้องมี 8 ตัวขึ้นไป
+            </mat-error> -->
+            <mat-hint>รหัสผ่านต้องมี 8 ตัวขึ้นไป</mat-hint>
+        </mat-form-field>
+        <br>
+
+        <!-- <mat-form-field appearance="outline">
+            <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password" required>
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </mat-form-field> -->
+
+        <!-- <mat-form-field appearance="outline">
+            <mat-label>ยืนยันรหัสผ่าน</mat-label>
+            <input matInput placeholder="กรอกรหัสผ่านอีกครั้ง" ngValidateEqual="password" [type]="hide ? 'password' : 'text'" formControlName="confirm_password">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-error *ngIf="formUserData.value.confirm_password == ''">
+                กรุณายืนยันรหัสผ่าน
+            </mat-error>
+            <mat-error *ngIf="(formUserData.value.confirm_password.dirty || formUserData.value.confirm_password.touched) && formUserData.value.confirm_password.invalid">
+                <p *ngIf="formUserData.value.confirm_password.hasError('notEqual') && formUserData.value.confirm_password.valid">
+                    รหัสผ่านไม่ตรงกัน
+                </p>
+            </mat-error>
+        </mat-form-field> -->
+        <br>
+        <mat-form-field appearance="outline">
+            <mat-label>เบอร์โทรศัพท์</mat-label>
+            <input matInput placeholder="Enter your phone number" formControlName="phone">
+            <!-- <mat-icon matSuffix>tel</mat-icon> -->
+            <mat-icon matSuffix>phone</mat-icon>
+            <mat-error *ngIf="formUserData.value.phone == ''">
+                กรุณากรอกหมายเลขโทรศัพท์
+            </mat-error>
+            <mat-error *ngIf="formUserData.value.phone.length < 10">
+                เลขโทรศัพท์ไม่ครบ 10 หลัก
+            </mat-error>
+            <mat-hint></mat-hint>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>ตำแหน่ง</mat-label>
+            <mat-select formControlName="position">
+                <mat-option *ngFor="let posi of posite" value="{{ posi.value }}">
+                    {{posi.viewValue}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="formUserData.value.position == ''">
+                กรุณาเลือกตำแหน่ง
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>กลุ่มสาระการเรียนรู้</mat-label>
+            <mat-select formControlName="department">
+                <mat-option *ngFor="let department of departments" value="{{ department.value }}">
+                    {{department.viewValue}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="formUserData.value.department == ''">
+                กรุณาเลือกกลุ่มสาระการเรียนรู้
+            </mat-error>
+        </mat-form-field>
+        <hr>
+        <!-- <div class="button-group">
+            <button mat-raised-button color="primary" [disabled]="formUserData.invalid" (click)="addUser()">
+                <mat-icon>save</mat-icon> สมัครสมาชิก
+            </button> &nbsp;
+            <button mat-raised-button color="warn" mat-dialog-close>
+                <mat-icon> cancel_presentation</mat-icon> กเลิก
+            </button>
+        </div> -->
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>ยกเลิก</button>
+    <button mat-raised-button [mat-dialog-close]="true" cdkFocusInitial [disabled]="formUserData.invalid" (click)="addUser()">บันทึกข้อมูล</button>
+</mat-dialog-actions>

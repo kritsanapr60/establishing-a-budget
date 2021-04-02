@@ -1,0 +1,81 @@
+<h2 mat-dialog-title>ประวัติโครงการ</h2>
+<mat-dialog-content class="mat-typography" *ngFor="let item of value">
+    <h4 mat-dialog-title>จัดตั้งงบประมาณ : {{ item.majorList }}</h4>
+    <hr>
+    <h3>รายละเอียดรายการ : {{ item.majorList }}</h3>
+
+    <p *ngIf="item.status == 'ผ่านการอนุมัติ'">
+        สถานะโครงการ : {{ item.status }} &nbsp;<span class="dot success"></span>
+    </p>
+    <p *ngIf="item.status == 'กำลังดำเนินการ'">
+        สถานะโครงการ : {{ item.status }} &nbsp;<span class="dot pending"></span>
+    </p>
+    <p *ngIf="item.status == 'ไม่ผ่านการอนุมัติ'">
+        สถานะโครงการ : {{ item.status }} &nbsp;<span class="dot reject"></span>
+    </p>
+    <p>ผู้จัดตั้งโครงการ : {{ item.firstName }} {{ item.lastName }}</p>
+    <br>
+    <h3>ที่มาและเหตุผล</h3>
+    <div class="panel-body" [innerHTML]="item.reason"></div>
+
+    <h3>วัตถุประสงค์</h3>
+    <div class="panel-body" [innerHTML]="item.objective"></div>
+
+    <p><b>จำนวนงบประมาณที่จัดตั้ง</b> : {{ item.budget | number }} บาท</p>
+    <p><b>ราคาไทย</b> : {{ thaiBaht }} บาท</p>
+    <p><b>เกณฑ์ความจำเป็นที่ต้องมี</b> : {{ item.necessary }} หน่วย</p>
+    <p><b>อุปกรณ์ที่มีอยู่แล้ว</b> : {{ item.existEquipment }} หน่วย</p>
+    <p><b>เงื่อไขการขอ</b> : {{ item.condition }}</p>
+
+
+
+    <table class="table table-hover">
+        <thead class="thead-dark text-center">
+            <th>รายการที่</th>
+            <th>รายการครุภัณฑ์ย่อย</th>
+            <th>ราคาต่อหน่วย</th>
+            <th>จำนวนหน่วย</th>
+            <th>ราคา</th>
+        </thead>
+        <!-- <tbody class="text-center"> 
+            <tr *ngFor="let itemDetail of value">
+                <td class="table-active">{{ itemDetail.equipmentName }}</td>
+                <td class="table-active">{{ itemDetail.budgetPerPrice | number }}</td>
+                <td class="table-active">{{ itemDetail.unit }}</td>
+                <td class="table-active">{{ itemDetail.budget | number}}</td>
+            </tr>
+        </tbody> -->
+        <tbody class="" *ngFor="let item of value; let i = index">
+            <tr *ngFor="let itemDetail of item['listSubEquipment']; let j = index">
+                <!-- {{ itemDetail | json}} -->
+                <td class="table-active text-center"> {{ j + 1 }}</td>
+                <td class="table-active">{{ itemDetail.equipmentName }}</td>
+                <td class="table-active text-center">{{ itemDetail.budgetPerPrice | number }}</td>
+                <td class="table-active text-center">{{ itemDetail.unit }}</td>
+                <td class="table-active text-center">{{ itemDetail.budget | number}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <p><b>เงื่อนไขการอนุมัติ :</b> {{ item.approveCondition }}</p>
+    <p><b>หมายเหตุ:</b> {{ item.approveReason }}</p>
+    <br>
+    <br>
+
+    <p class="text-center">ลงชื่อ<u>&nbsp;&nbsp;&nbsp;{{ item.firstName }} {{ item.lastName }}&nbsp;&nbsp;&nbsp;</u> ผู้จัดตั้งโครงการ</p>
+    <p class="text-center">( {{ item.firstName }} {{ item.lastName }} )</p>
+
+
+
+    <!-- </div> -->
+    <!-- <h3>สร้างและส่งออกไฟล์เอกสาร ของรายละเอียดรายการย่อย</h3> -->
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <hr>
+    <button mat-raised-button color="accent" mat-dialog-close>
+        <mat-icon>close</mat-icon> ปิด
+    </button>
+    <!-- <button mat-raised-button mat-dialog-close (click)="exportPDF()"><span class="material-icons">import_export</span>
+        ส่งออกหเอกสาร </button> -->
+    <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button> -->
+</mat-dialog-actions>

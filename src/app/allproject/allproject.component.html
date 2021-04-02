@@ -1,0 +1,85 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <!-- <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+            </div>
+        </div> -->
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="alert alert-default">
+                    <div class="col-md-12">
+                        <U>การทำงาน </U> : จัดตั้งงบประมาณรายการค่าครุภัณฑ์ (แสดงประวัติการได้รับจัดสรรที่ผ่านการอนุมัติแล้ว)
+                    </div>
+                </div>
+                <!-- <div class="card-body table-responsive">
+                    </div> -->
+
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">ประวัติการได้รับจัดสรร</h4>
+                        <p class="card-category">ข้อมูลการได้รับการจัดสรรครุภัณฑ์ของคุณครูที่ผ่านมา จะแสดงสถานะการดำเนินการที่ผ่านมา
+                        </p>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <div class="row">
+                            <div class="col-12">
+                                <form>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>ค้นหา</mat-label>
+                                        <input matInput placeholder="ปี พ.ศ. | หมวดหมู่ | สถานะ" name="searchEquipment" [(ngModel)]="searchEquipment">
+                                        <mat-icon matSuffix type="submit">search</mat-icon>
+                                    </mat-form-field>
+                                </form>
+                            </div>
+                            <!-- <div class="col-4">
+                                <form>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>เรียงลำดับ</mat-label>
+                                        <mat-select [(ngModel)]="selectOption" (ngModelChange)="onChange($event)">
+                                            <mat-option *ngFor="let item of searchOption" value="item.value">{{item.valueView}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </form>
+                                {{ selectOption | json}}
+                            </div> -->
+                        </div>
+                        <table class="table table-hover">
+                            <thead class="thead-dark text-center">
+                                <th>ปีงบประมาณ</th>
+                                <th>รายการ</th>
+                                <th>หน่วย</th>
+                                <th>งบประมาณ</th>
+                                <th>หมายเหตุ</th>
+                            </thead>
+                            <tbody class="text-center">
+                                <tr *ngFor="let item of history | filter:searchEquipment index as i" (click)="openDialog(item._id)">
+                                    <!-- <tr *ngFor="let item of history | filter:searchEquipment index as i"> -->
+                                    <td>{{item.dateProject | thaidate: 'dd/MM/yyyy'}}</td>
+                                    <td class="text-left">{{ item.majorList }}</td>
+                                    <td>{{ item.necessary }}</td>
+                                    <td>{{ item.budget | number }}</td>
+                                    <td *ngIf="item.status == 'ผ่านการอนุมัติ'">
+                                        <span class="dot success"></span> {{ item.status }}
+                                    </td>
+                                    <td *ngIf="item.status == 'กำลังดำเนินการ'">
+                                        <span class="dot pending"></span> {{ item.status }}
+                                    </td>
+                                    <td *ngIf="item.status == 'ไม่ผ่านการอนุมัติ'">
+                                        <span class="dot reject"></span> {{ item.status }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="12" class="text-center">
+                                        <p class="info-text" *ngIf="history <= 0">ไม่มีข้อมูล</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+                        </mat-paginator> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

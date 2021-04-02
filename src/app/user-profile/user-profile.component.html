@@ -1,0 +1,214 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+
+                <form [formGroup]="profile">
+                    <div class="content">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <!-- <div class="col-md-4">
+                                    <div class="card card-profile">
+                                        <div class="card-avatar">
+                                            <div *ngIf="imagePreview !== '' || avatar !== 'ADMIN' && avatar !== 'USER' && avatar !== 'LEADER' ; else noImage">
+                                                <img class="img" [src]="imagePreview" />
+                                            </div>
+                                            <ng-template #noImage>
+                                                <img class="img" src="../assets/img/faces/no-image.png" [alt]="profile.value.firstName" />
+                                            </ng-template>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-description">
+                                                เลือกรูปโปรไฟล์ที่สวมชุดสุภาพเเละที่มีขนาดไฟล์ภาพไม่เกิน ...MB
+                                            </p>
+                                            <hr>
+                                            <div>
+                                                <button mat-stroked-button type="button" (click)="filePicker.click()">Pick Image</button>
+                                                <input type="file" #filePicker (change)="onImagePicked($event)">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+
+                                <!-- Start form input data of user detail -->
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-header card-header-danger">
+                                            <h4 class="card-title">โปรไฟล์</h4>
+                                            <p class="card-category">
+                                                จัดการข้อมูลส่วนส่วนตัวของคุณเพื่อความปลอดภัยของบัญชีผู้ช้นี้</p>
+                                        </div>
+                                        <div class="card-body">
+
+                                            <div class="container">
+                                                <div class="row profile">
+                                                    <div class="col-md-6">
+                                                        <!-- <p class="card-category"><b>ชื่อ : {{ firstName }}</b></p> -->
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>ชื่อ</mat-label>
+                                                            <input matInput type="text" formControlName="firstName" placeholder="ชื่อ">
+                                                            <mat-icon matSuffix>assignment_ind</mat-icon>
+                                                        </mat-form-field>
+                                                        <!-- <mat-form-field>
+                                                            <input matInput type="text" formControlName="firstName" placeholder="ชื่อ">
+                                                            <mat-error *ngIf="profile.get('firstName').invalid">Please enter a first name.</mat-error>
+                                                        </mat-form-field> -->
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <!-- <p class="card-category"><b>นามสกุล : {{ lastName }}</b></p> -->
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>นามสกุล</mat-label>
+                                                            <input matInput type="text" formControlName="lastName" placeholder="นามสกุล">
+                                                            <mat-icon matSuffix>assignment_ind</mat-icon>
+                                                            <!-- <mat-error *ngIf="profile.get('lastName').invalid">Please enter a last name.</mat-error> -->
+                                                        </mat-form-field>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row profile">
+                                                    <div class="col-md-12">
+                                                        <!-- <p class="card-category"><b>อีเมล : {{ email }}</b></p> -->
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>อีเมล</mat-label>
+                                                            <input matInput type="text" formControlName="email" placeholder="อีเมล">
+                                                            <mat-icon matSuffix>email</mat-icon>
+                                                            <!-- <mat-error *ngIf="profile.get('email').invalid">Please enter a email.</mat-error> -->
+                                                        </mat-form-field>
+                                                        <!-- </div>
+                                                    <div class="col-md-6"> -->
+                                                        <!-- <p class="card-category"><b>หมายเลขโทรศัพท์ : {{ phone }}</b></p> -->
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>โทรศัพท์</mat-label>
+                                                            <input matInput type="text" formControlName="phone" placeholder="โทรศัพท์">
+                                                            <mat-icon matSuffix>contact_phone</mat-icon>
+                                                            <!-- <mat-error *ngIf="profile.get('phone').invalid">Please enter a phone number.</mat-error> -->
+                                                        </mat-form-field>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row profile">
+                                                    <div class="col-md-12">
+                                                        <!-- <p class="card-category"><b>ตำแหน่ง : {{ position }}</b></p> -->
+                                                        <!-- <mat-form-field appearance="outline">
+                                                            <mat-label>ตำแหน่ง</mat-label>
+                                                            <input matInput type="text" formControlName="department" placeholder="ตำแหน่ง">
+                                                            <mat-icon matSuffix>person</mat-icon>
+                                                        </mat-form-field> -->
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>ตำแหน่ง</mat-label>
+                                                            <mat-select formControlName="department">
+                                                                <mat-option *ngFor="let item of departments" value="{{item.value}}">{{ item.viewValue }}
+                                                                </mat-option>
+                                                            </mat-select>
+                                                        </mat-form-field>
+                                                        <!-- </div>
+                                                    <div class="col-md-6"> -->
+                                                        <mat-form-field appearance="outline">
+                                                            <mat-label>สถานะ</mat-label>
+                                                            <input matInput type="text" formControlName="position" placeholder="" readonly>
+                                                            <!-- <mat-icon matSuffix>person</mat-icon> -->
+                                                            <mat-icon matSuffix>verified_user</mat-icon>
+                                                        </mat-form-field>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <button type="submit" class="btn btn-default pull-right" (click)="changePassword()">
+                                                    <mat-icon>edit</mat-icon> แก้ไขรหัส่าน
+                                                </button>
+                                                <button type="submit" class="btn btn-danger pull-right" (click)="onSavePost()">
+                                                    <mat-icon>edit</mat-icon> แก้ไขข้อมูลส่วนตัว
+                                                </button>
+                                                <div class="clearfix"></div>
+                                            </div>
+
+                                            <!-- <form>
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Company (disabled)</label>
+                                                        <input type="text" class="form-control" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Username</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Email address</label>
+                                                        <input type="email" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Fist Name</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Last Name</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Adress</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">City</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Country</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating">Postal Code</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>About Me</label>
+                                                        <div class="form-group">
+                                                            <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
+                                                            <textarea class="form-control" rows="5"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                                            <div class="clearfix"></div>
+                                        </form> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End of form user data detail -->
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>

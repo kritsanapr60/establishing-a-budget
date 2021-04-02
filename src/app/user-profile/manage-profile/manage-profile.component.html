@@ -1,0 +1,66 @@
+<h2 mat-dialog-title>แก้ไขข้อมูลส่วนตัว</h2>
+<mat-divider></mat-divider>
+<mat-dialog-content class="mat-typography">
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col">
+                <div>
+                    <div class="form-row mb-12">
+                        <div class="col">
+                            <mat-form-field appearance="outline">
+                                <mat-label>ชื่อ</mat-label>
+                                <input matInput placeholder="กรอกชื่อ" type="text">
+                                <mat-icon matSuffix></mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <mat-form-field appearance="outline">
+                                <mat-label>นามสกุล</mat-label>
+                                <input matInput placeholder="กรอกนามสกุลของคุณ" type="text">
+                                <mat-icon matSuffix></mat-icon>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>อีเมล</mat-label>
+                        <input matInput placeholder="กรอกอีเมล" type="text">
+                        <mat-icon matSuffix></mat-icon>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>หมายเลขโทรศัพท์</mat-label>
+                        <input matInput placeholder="หมายเลขที่โทรศัพท์ท่ติดต่อได้" type="text">
+                        <mat-icon matSuffix></mat-icon>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>เพศ</mat-label>
+                        <mat-select>
+                            <mat-option value="ชาย">ชาย</mat-option>
+                            <mat-option value="หญิง">หญิง</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>อายุ</mat-label>
+                        <input matInput placeholder="กรอกอายุ" type="text">
+                        <mat-icon matSuffix></mat-icon>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>ตำเเหน่ง</mat-label>
+                        <mat-select>
+                            <mat-option value="ชาย">ครู</mat-option>
+                            <mat-option value="หญิง">หัวหน้ากลุ่มสาระการเรียนรู้</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="accent" mat-dialog-close>ยกเลิก</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>บันทึกการแก้ไข</button>
+</mat-dialog-actions>

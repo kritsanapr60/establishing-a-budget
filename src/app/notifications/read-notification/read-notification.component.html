@@ -1,0 +1,29 @@
+<button type="button" class="close" data-dismiss="alert" aria-label="Close" mat-dialog-close>
+    <span aria-hidden="true">&times;</span>
+</button>
+<div class="row">
+    <div class="col-md-12">
+        <div>
+            <h3>{{ detail }}</h3>
+            <p>เวลา : {{ dateTime | thaidate: 'meduim'}}</p>
+            <hr>
+            <p>โครงการ : {{ detail }}</p>
+            <p>สถานะโครงการ : <i> <u>{{ status }}</u></i></p>
+            <p>
+                เงื่อนไข : {{ type }}
+            </p>
+            <p>หมายเหตุ : {{ note }}</p>
+            <hr>
+            <P>ผู้จัดทำโครงการ : {{firstName}} {{lastName}}</P>
+        </div>
+    </div>
+</div>
+
+<!-- <div *ngFor="let notic of document">
+    <h3>{{ notic.detail }}</h3>
+    <p>เวลา : {{ notic.dateTime | thaidate: 'meduim'}}</p>
+    <hr>
+    <p>{{ notic.type }} : {{ notic.detail }}</p>
+    <p>สถานะโครงการ : <i> <u>{{ notic.status }}</u></i></p>
+    <P>ผู้จัดทำโครงการ : {{firstName}} {{lastName}}</P>
+</div> -->
