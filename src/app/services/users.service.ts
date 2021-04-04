@@ -8,7 +8,6 @@ import {
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
-
 // Model
 import { AuthData } from './../../models/auth-data.model';
 import { Users } from './../../models/users.model';
@@ -26,8 +25,9 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { ChangePasswordComponent } from '../user-profile/change-password/change-password.component';
+import { environment } from 'environments/environment';
 
-const BACKEND_URL = 'http://localhost:8080/users/';
+const BACKEND_URL = environment.apiUrl + 'users/';
 // const BACKEND_URL = 'https://budget-school-api.herokuapp.com/users/';
 @Injectable({
   providedIn: 'root',

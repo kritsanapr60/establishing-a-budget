@@ -6,8 +6,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs';
+import { environment } from '../../environments/environment';
 
-const BACKEND_API = "http://localhost:8080/mainEquipment/";
+const BACKEND_API = environment.apiUrl + "mainEquipment/";
 
 @Injectable({
   providedIn: 'root',

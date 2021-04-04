@@ -3,8 +3,9 @@ import { HttpClient } from "@angular/common/http";
 import { Notification } from "./../../models/notified.model";
 import { Subject, Observable } from "rxjs";
 import { Router } from "@angular/router";
+import { environment } from '../../environments/environment';
 
-const BACKEND_URL = "http://localhost:8080/notification/";
+const BACKEND_URL = environment.apiUrl + "notification/";
 @Injectable({
   providedIn: "root",
 })

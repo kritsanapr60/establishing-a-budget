@@ -5,14 +5,13 @@
     "projects": {
         "material-dashboard-angular": {
             "root": "",
-            "outDir": "../backend/public/",
             "sourceRoot": "src",
             "projectType": "application",
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist",
+                        "outputPath": "dist/blwsc-establishing",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "tsConfig": "src/tsconfig.app.json",

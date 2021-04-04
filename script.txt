@@ -29,3 +29,7 @@
         "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && ng serve -o",
         "start-app": "nodemon server.js",
         "postinstall": "ng build --aot --prod"
+
+
+
+        // "outDir": "../backend/public/",

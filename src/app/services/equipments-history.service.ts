@@ -2,8 +2,9 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from '../../environments/environment';
 
-const BACKEND_URL = "http://localhost:8080/history/history";
+const BACKEND_URL = environment.apiUrl + "history/history";
 
 @Injectable({
   providedIn: "root",

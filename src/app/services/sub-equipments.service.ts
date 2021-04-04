@@ -6,8 +6,9 @@ import { Injectable } from '@angular/core';
 import { SubEquipments } from './../../models/sub-equipments.model';
 
 import * as io from 'socket.io-client';
+import { environment } from '../../environments/environment';
 
-const BACKEND_URL = 'http://localhost:8080/subEquipment/';
+const BACKEND_URL = environment.apiUrl + 'subEquipment/';
 @Injectable({
   providedIn: 'root',
 })

@@ -89,7 +89,7 @@ import { ChangePasswordComponent } from "app/user-profile/change-password/change
     AddUserComponent,
     ReadProjectDetailComponent,
     ReadNotificationComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
   ],
   entryComponents: [
     MoreDetailComponent,
