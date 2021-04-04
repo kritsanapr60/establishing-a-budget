@@ -11,7 +11,7 @@
         "e2e": "ng e2e",
         "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && ng serve -o",
         "start-app": "nodemon server.js",
-        "postinstall": "ng build --output-path angularapp  --aot --prod"
+        "postinstall": "ng build --aot --prod"
     },
     "engines": {
         "node": "12.14.1",
