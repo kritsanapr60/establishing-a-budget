@@ -33,3 +33,4 @@
 
 
         // "outDir": "../backend/public/",
+                "postinstall": "ng build --aot --prod"
