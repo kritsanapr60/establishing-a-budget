@@ -1,0 +1,18 @@
+"@angular-devkit/build-angular": "0.1001.4",
+"@angular/cli": "10.1.4",
+"@angular/compiler-cli": "10.1.4",
+"typescript": "4.0.3"
+
+
+
+"scripts": {
+        "ng": "ng",
+        "start": "ng serve --port $PORT --host 0.0.0.0 --disable-host-check",
+        "build": "ng build",
+        "test": "ng test",
+        "lint": "ng lint",
+        "e2e": "ng e2e",
+        "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && ng serve -o",
+        "start-app": "nodemon server.js",
+        "postinstall": "ng build --output-path angularapp --aot --prod"
+    },
