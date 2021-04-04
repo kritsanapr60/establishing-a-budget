@@ -45,6 +45,7 @@ import { ReadNotificationComponent } from "app/notifications/read-notification/r
 // import 'chart.piecelabel.js';
 import "chart.piecelabel.js";
 import { ChangePasswordComponent } from "app/user-profile/change-password/change-password.component";
+// import { CompareDirective } from "../../directives/compare-password.directive";
 
 @NgModule({
   imports: [
@@ -64,7 +65,7 @@ import { ChangePasswordComponent } from "app/user-profile/change-password/change
     MatPaginatorModule,
     Ng2SearchPipeModule,
     ChartModule,
-    ChartsModule,
+    ChartsModule
   ],
   declarations: [
     DashboardComponent,
@@ -90,14 +91,18 @@ import { ChangePasswordComponent } from "app/user-profile/change-password/change
     ReadProjectDetailComponent,
     ReadNotificationComponent,
     ChangePasswordComponent,
+    // CompareDirective
   ],
+  // exports: [
+  //   CompareDirective
+  // ],
   entryComponents: [
     MoreDetailComponent,
     UserDetailComponent,
     DetailHistoryComponent,
     AddUserComponent,
     ReadNotificationComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
   ],
 })
 export class AdminLayoutModule {}

@@ -52,7 +52,7 @@ export class ManageSubEquipmentComponent implements OnInit, OnDestroy {
   countPricePerUnit: number;
   private authStatusSub: Subscription;
   private allUpdate: Subscription;
-  private subEquipmentsData: SubEquipments[] = [];
+  subEquipmentsData: SubEquipments[] = [];
 
   valueOfprice: number;
   valueOfunit: number;
