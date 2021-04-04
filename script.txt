@@ -16,3 +16,16 @@
         "start-app": "nodemon server.js",
         "postinstall": "ng build --output-path angularapp --aot --prod"
     },
+
+
+
+// version 2
+"ng": "ng",
+        "start": "ng serve --port $PORT --host 0.0.0.0 --disable-host-check",
+        "build": "ng build",
+        "test": "ng test",
+        "lint": "ng lint",
+        "e2e": "ng e2e",
+        "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && ng serve -o",
+        "start-app": "nodemon server.js",
+        "postinstall": "ng build --aot --prod"

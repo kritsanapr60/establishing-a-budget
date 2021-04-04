@@ -9,13 +9,7 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && ng serve -o",
-        "start-app": "nodemon server.js",
         "postinstall": "ng build --aot --prod"
-    },
-    "engines": {
-        "node": "12.14.1",
-        "npm": "6.13.4"
     },
     "private": true,
     "dependencies": {
@@ -80,6 +74,8 @@
         "typescript": "4.0.3"
     },
     "devDependencies": {
+        "@angular/cli": "10.1.4",
+        "@angular/compiler-cli": "10.1.4",
         "@angular/language-service": "10.1.4",
         "@types/bootstrap": "4.5.0",
         "@types/chartist": "0.11.0",
@@ -100,5 +96,9 @@
         "protractor": "7.0.0",
         "ts-node": "9.0.0",
         "tslint": "6.1.3"
+    },
+    "engines": {
+        "node": "12.14.1",
+        "npm": "6.13.4"
     }
 }
