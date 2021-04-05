@@ -366,6 +366,7 @@ export class ExportsEquipmentService {
               {
                 text: `${this.reason}`,
                 fontSize: 16,
+                alignment: 'justify'
               },
               ' ',
               {
@@ -376,6 +377,7 @@ export class ExportsEquipmentService {
               {
                 text: `${this.objective}`,
                 fontSize: 16,
+                alignment: 'justify'
               },
               ' ',
               {
@@ -489,7 +491,7 @@ export class ExportsEquipmentService {
                 // layout: 'lightHorizontalLines', // optional
                 table: {
                   headerRows: 1,
-                  widths: ['auto', '*', '*', '*', '*'],
+                  widths: ['auto', 'auto', '*', '*', '*'],
                   body:
                   // [headerContent, tableBody],
                   // [column, value],

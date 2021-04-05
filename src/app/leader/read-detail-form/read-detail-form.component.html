@@ -40,7 +40,7 @@
                                         <p>เกณฑ์ความจำเป็นที่ควรมี : {{ condition }}</p>
                                         <p>อุปกรณ์ที่มีอยู่ : {{ existEquipment }}</p>
                                         <p>เหตุผลเพิ่มเติม : {{ otherReason }}</p>
-                                        <p>วันที่เอกสาร : {{dateProject | date: "meduim"}}</p>
+                                        <p>วันที่เอกสาร : {{dateProject | thaidate: "meduim"}}</p>
                                         <p>เงื่อไขการขอ : </p>
                                         <form [formGroup]="conditionValue">
                                             <mat-radio-group formControlName="condition">
