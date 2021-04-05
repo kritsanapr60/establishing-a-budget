@@ -25,7 +25,7 @@ export class EquipmentsService {
     // เพิ่ม User ID ด้วย
     return this._http.get<{ data: any  }>(
       // 'http://localhost:8080/mainEquipment/getAllEquipments'
-      BACKEND_API+'getAllEquipments'
+      BACKEND_API + 'getAllEquipments'
     ).subscribe((data) => {
       // console.log(data);
       this.equipments = data.data;
@@ -71,7 +71,7 @@ export class EquipmentsService {
       response: any
     }>(
       // 'http://localhost:8080/mainEquipment/getOneEquipment/' + equipmentsId
-      BACKEND_API + 'getOneEquipment' + equipmentsId
+      BACKEND_API + 'getOneEquipment/' + equipmentsId
     );
   }
 
@@ -194,7 +194,7 @@ export class EquipmentsService {
     this._http
       .put<{ message: string; equipmentId: string }>(
         // 'http://localhost:8080/mainEquipment/editEquipment/' + id,
-        BACKEND_API + 'editEquipment/'+ id,
+        BACKEND_API + 'editEquipment/' + id,
         equipment
       )
       .subscribe((responseData) => {
@@ -210,7 +210,7 @@ export class EquipmentsService {
     this._http
       .delete(
         // 'http://localhost:8080/mainEquipment/deleteEquipment/' + equipmentId
-        BACKEND_API + 'deleteEquipment' + equipmentId
+        BACKEND_API + 'deleteEquipment/' + equipmentId
       )
       .subscribe(() => {
         console.log('Delete successful');

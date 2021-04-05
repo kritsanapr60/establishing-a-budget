@@ -34,7 +34,7 @@ export class NotifiedService {
     console.log(id);
     return this.http.get<{ message: string; response; any }>(
       // 'http://localhost:8080/notification/getOneNotification/' + id
-      BACKEND_URL + "getOneNotification" + id
+      BACKEND_URL + "getOneNotification/" + id
     );
   }
 
@@ -91,7 +91,7 @@ export class NotifiedService {
     this.http
       .put(
         // "http://localhost:8080/notification/editNotification/" + id,
-        BACKEND_URL + "editNotification" + id,
+        BACKEND_URL + "editNotification/" + id,
         notification
       )
       .subscribe((response) => {

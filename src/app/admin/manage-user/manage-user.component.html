@@ -1,3 +1,4 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
@@ -40,7 +41,7 @@
                         <th>กลุ่มสาระฯ</th>
                         <th>แก้ไขผู้ใช้าน</th>
                     </thead>
-                    <tbody class="text-center">
+                    <tbody class="text-center" *ngIf="!isLoading">
                         <tr *ngFor="let user of users$ | filter:searchUser  index as i">
                             <td class="table-active text-center">{{ user.firstName }} {{ user.lastName }}</td>
                             <td class="table-active">{{ user.position }}</td>

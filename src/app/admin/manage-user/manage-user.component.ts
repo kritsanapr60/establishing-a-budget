@@ -59,7 +59,7 @@ export class ManageUserComponent implements OnInit, OnDestroy {
       viewValue: "กลุ่มสาระการเรียนรู้ภาษาต่างประเทศ",
     },
   ];
-
+  isLoading = false;
   users$;
   userData$;
   personalData;
