@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 // Export PDF
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+// pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { UsersService } from 'app/services/users.service';
 import { EquipmentsService } from 'app/services/equipments.service';
 import { SubEquipmentsService } from './sub-equipments.service';
@@ -9,7 +10,6 @@ import { EquipmentsHistoryService } from './equipments-history.service';
 import { Equipments } from 'models/equipments.model';
 import { SubEquipments } from '../../models/sub-equipments.model';
 import { map } from 'rxjs/operators';
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import THBText from 'thai-baht-text'
 @Injectable({
   providedIn: 'root',
@@ -158,8 +158,6 @@ export class ExportsEquipmentService {
             alignment: 'center',
           });
 
-         
-
           var headerContent = [
             {
               text: 'ลำดับ',
@@ -234,7 +232,6 @@ export class ExportsEquipmentService {
           for (var i = 0; i < headerContent.length; i++) {
             var row = [];
             for (var j = 0; j < this.sub_equipments.length; j++) {
-              // row[j] = wantedBody[j] + i;
               row.push({
                 text: this.sub_equipments[j].equipmentName,
                 style: 'tableHeader',
@@ -548,8 +545,4 @@ export class ExportsEquipmentService {
       });
     });
   }
-
-
-
-  
 }
