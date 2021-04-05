@@ -26,7 +26,7 @@ export class SubEquipmentsService {
     return this.http
       .get<{ message: string; response: any }>(
         // 'http://localhost:8080/subEquipment/getSubId/' + mainId
-        BACKEND_URL + 'getSubId' + mainId
+        BACKEND_URL + 'getSubId/' + mainId
       )
       .subscribe((subEquipments) => {
         this.subEquipments = subEquipments.response;
@@ -43,7 +43,7 @@ export class SubEquipmentsService {
     return this.http
       .get<{ message: string; response: SubEquipments[] }>(
         // 'http://localhost:8080/subEquipment/getSubId/' + id
-        BACKEND_URL + '/getSubId' + id
+        BACKEND_URL + 'getSubId/' + id
       );
   }
 
