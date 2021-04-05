@@ -279,6 +279,7 @@ export class UsersService {
   deleteUser(userId: string) {
     this.http
       // .delete('http://localhost:8080/users/deleteUser/' + userId)
+      // .delete('http://localhost:8080/users/deleteUser/' + userId)
       .delete(BACKEND_URL + 'deleteUser/' + userId)
       .subscribe(
         (userDelete) => {
