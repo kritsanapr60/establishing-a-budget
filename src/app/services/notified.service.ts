@@ -31,7 +31,7 @@ export class NotifiedService {
   }
 
   getNotified(id: string) {
-    console.log(id);
+    // console.log(id);
     return this.http.get<{ message: string; response; any }>(
       // 'http://localhost:8080/notification/getOneNotification/' + id
       BACKEND_URL + "getOneNotification/" + id
@@ -66,7 +66,7 @@ export class NotifiedService {
         notification
       )
       .subscribe((respondata) => {
-        console.log(respondata);
+        // console.log(respondata);
       });
   }
 
@@ -96,12 +96,12 @@ export class NotifiedService {
       )
       .subscribe((response) => {
         this.router.navigate(["/notifications"]);
-        console.log("readed !");
+        // console.log("readed !");
       });
   }
 
   deleteNotified(id: string) {
-    console.log(id + "In Service file");
+    // console.log(id + "In Service file");
     this.http
       // .delete("http://localhost:8080/notification/deleteOneNotification/" + id)
       .delete(BACKEND_URL + "deleteOneNotification/" + id)

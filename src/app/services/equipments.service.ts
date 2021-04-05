@@ -190,7 +190,7 @@ export class EquipmentsService {
       approveCondition: approveCondition,
       approveReason: approveReason
     };
-    console.log(equipment);
+    // console.log(equipment);
     this._http
       .put<{ message: string; equipmentId: string }>(
         // 'http://localhost:8080/mainEquipment/editEquipment/' + id,
@@ -199,10 +199,10 @@ export class EquipmentsService {
       )
       .subscribe((responseData) => {
         const message = 'Success';
-        console.log('Edit data success');
+        // console.log('Edit data success');
         // this.router.navigate(['/requestEquipment']);
       }, (error) => {
-        console.log('Error');
+        // console.log('Error');
       });
   }
 
@@ -213,7 +213,7 @@ export class EquipmentsService {
         BACKEND_API + 'deleteEquipment/' + equipmentId
       )
       .subscribe(() => {
-        console.log('Delete successful');
+        // console.log('Delete successful');
         const updateEquipments = this.equipments.filter((data) => data._id !== equipmentId);
         this.equipments = updateEquipments;
         this.equipmentUpdated.next([...this.equipments]);

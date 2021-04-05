@@ -83,7 +83,7 @@ export class SubEquipmentsService {
         subEquipment
       )
       .subscribe((response) => {
-        console.log('This is response : ', response);
+        // console.log('This is response : ', response);
       });
     // console.log(`Data of sub equipment :${mainId}, ${mainEquipmentsName} ,${subEquipmentName},${pricePerunit},${number}, ${budget}`);
   }
@@ -102,7 +102,7 @@ export class SubEquipmentsService {
       // .delete('http://localhost:8080/subEquipment/deleteSubEquipment/' + id)
       .delete(BACKEND_URL + 'deleteSubEquipment/' + id)
       .subscribe(() => {
-        console.log('Delete Successful!');
+        // console.log('Delete Successful!');
         const updateSubEquipment = this.subEquipments.filter(
           (data) => data._id !== id)
         this.subEquipments =  updateSubEquipment;

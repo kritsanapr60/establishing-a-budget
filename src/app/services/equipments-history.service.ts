@@ -61,13 +61,13 @@ export class EquipmentsHistoryService {
       creator: creator,
       listSubEquipment: listSubEquipment,
     };
-    console.log('History :', history);
+    // console.log('History :', history);
     this.http.post<{ message: string }>(BACKEND_URL, history).subscribe(
       (response) => {
-        console.log("Insert data success" , response);
+        // console.log("Insert data success" , response);
       },
       (error) => {
-        console.log(`error message is ${error}`);
+        // console.log(`error message is ${error}`);
       }
     );
   }
@@ -91,10 +91,10 @@ export class EquipmentsHistoryService {
   deleteHistory(id: string) {
     this.http.delete<{ message: string }>(BACKEND_URL + "/" + id).subscribe(
       (response) => {
-        console.log(response);
+        // console.log(response);
       },
       (error) => {
-        console.log(`error message is ${error}`);
+        // console.log(`error message is ${error}`);
       }
     );
   }
@@ -102,10 +102,10 @@ export class EquipmentsHistoryService {
   deleteOneHistory() {
     this.http.get<{ message: string }>(BACKEND_URL).subscribe(
       (response) => {
-        console.log(response);
+        // console.log(response);
       },
       (error) => {
-        console.log(`error message is ${error}`);
+        // console.log(`error message is ${error}`);
       }
     );
   }

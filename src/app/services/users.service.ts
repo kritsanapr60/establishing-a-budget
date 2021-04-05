@@ -85,7 +85,7 @@ export class UsersService {
             const expirationDate = new Date(
               now.getTime() + expiresInDuration * 1000
             );
-            console.log(expirationDate);
+            // console.log(expirationDate);
             this.saveAuthData(token, expirationDate, this.userId);
             this.router.navigate(['/home']);
 
@@ -104,14 +104,14 @@ export class UsersService {
 
   autoAuthUser() {
     const authInformation = this.getAuthData();
-    console.log('autoAtuthUser : ', authInformation);
+    // console.log('autoAtuthUser : ', authInformation);
     if (!authInformation) {
-      console.log(`Don't have authInformation infunction : getAuthData`);
+      // console.log(`Don't have authInformation infunction : getAuthData`);
       return;
     }
     const now = new Date();
     const expiresIn = authInformation.expirationDate.getTime() - now.getTime();
-    console.log(`AuthoAutUser working now : ${now} , ${expiresIn}`);
+    // console.log(`AuthoAutUser working now : ${now} , ${expiresIn}`);
     if (expiresIn > 0) {
       this.token = authInformation.token;
       this.isAuthenticated = true;
@@ -130,10 +130,10 @@ export class UsersService {
   }
 
   private setAuthTimer(duration: number) {
-    console.log('Setting timer: ' + duration);
+    // console.log('Setting timer: ' + duration);
     this.tokenTimer = setTimeout(() => {
       this.logout();
-      console.log('Now status you logout !');
+      // console.log('Now status you logout !');
     }, duration * 10000);
     // }, duration * 1000);
   }
@@ -142,14 +142,14 @@ export class UsersService {
     localStorage.setItem('token', token);
     localStorage.setItem('expiration', expirationDate.toISOString());
     localStorage.setItem('userId', userId);
-    console.log('Save alredy daya of user : saveAuthData !');
+    // console.log('Save alredy daya of user : saveAuthData !');
   }
 
   private clearAuthData() {
     localStorage.removeItem('token');
     localStorage.removeItem('expiration');
     localStorage.removeItem('userId');
-    console.log('Clear Authentication data : clearAuthData');
+    // console.log('Clear Authentication data : clearAuthData');
   }
 
   private getAuthData() {
@@ -159,9 +159,9 @@ export class UsersService {
     if (!token || !expirationDate) {
       return;
     }
-    console.log(
-      `Token : ${token}, expireationDate : ${expirationDate}, userId : ${userId} `
-    );
+    // console.log(
+    //   `Token : ${token}, expireationDate : ${expirationDate}, userId : ${userId} `
+    // );
     return {
       token: token,
       expirationDate: new Date(expirationDate),
@@ -283,10 +283,10 @@ export class UsersService {
       .delete(BACKEND_URL + 'deleteUser/' + userId)
       .subscribe(
         (userDelete) => {
-          console.log(userDelete);
+          // console.log(userDelete);
         },
         (error) => {
-          console.log(error);
+          // console.log(error);
         }
       );
   }
@@ -317,7 +317,8 @@ export class UsersService {
       avatar: avatar,
       permission: permission,
     };
-    console.log('User detail : ', user);
+    // console.log('User detail : ', user);
+
     // this.http
     //   .put(`${this.url_API}/users/verified/${id}`, user)
     //   .subscribe((response) => {
@@ -459,7 +460,7 @@ export class UsersService {
       )
       .subscribe(
         (response) => {
-          console.log(response);
+          // console.log(response);
           Swal.fire(
             'แก้ไขข้อมูลเรียบร้อยแล้ว',
             'You submitted succesfully!',
@@ -467,7 +468,7 @@ export class UsersService {
           );
         },
         (error) => {
-          console.log(error);
+          // console.log(error);
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
@@ -497,17 +498,17 @@ export class UsersService {
       department,
       role
     };
-    console.log(personalData, 'with break point');
+    // console.log(personalData, 'with break point');
 
     this.http.put(BACKEND_URL + 'userEditProfile/' + id, personalData).subscribe(response => {
-      console.log('Edit user data success');
+      // console.log('Edit user data success');
       Swal.fire(
         'แก้ไขข้อมูลเรียบร้อยแล้ว',
         'You submitted succesfully!',
         'success'
       );
     }, (error) => {
-      console.log('Edit data faild !');
+      // console.log('Edit data faild !');
       Swal.fire({
         icon: 'error',
         title: 'ขออภัยด้วยครับ',
@@ -540,18 +541,18 @@ export class UsersService {
       role,
       new_password,
     };
-    console.log(userData);
+    // console.log(userData);
 
     this.http
       // .put('http://localhost:8080/users/' + 'editPassword/' + id, userData)
       .put(BACKEND_URL + 'editPassword/' + id, userData)
       .subscribe(
         (response) => {
-          console.log(`response is : ${response}`);
+          // console.log(`response is : ${response}`);
           Swal.fire('แก้ไขสำเร็จ', 'เปลี่ยนรหัสผ่านเรียบร้อย !', 'success');
         },
         (error) => {
-          console.log(`Error : ${error}`);
+          // console.log(`Error : ${error}`);
         }
       );
   }
